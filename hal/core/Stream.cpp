@@ -839,6 +839,11 @@ ndk::ScopedAStatus StreamCommonImpl::removeEffect(
     return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
 }
 
+ndk::ScopedAStatus StreamCommonImpl::createMmapBuffer(
+        ::aidl::android::hardware::audio::core::MmapBufferDescriptor* _aidl_return) {
+    return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+}
+
 ndk::ScopedAStatus StreamCommonImpl::close() {
     ModulePrimary::outListMutex.lock();
     LOG(DEBUG) << __func__;
