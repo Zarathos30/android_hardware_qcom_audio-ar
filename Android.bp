@@ -1,0 +1,27 @@
+// Pinned versions of the audio AIDL interfaces.
+//
+// The QTI HAL implements the audio core AIDL generation that predates
+// IStreamCommon.createMmapBuffer (added in V4), but the "latest_*" defaults
+// follow hardware/interfaces/audio/aidl, which has moved on to core V4 and
+// would make StreamCommonDelegator abstract.  Keep the implementations built
+// against the V3 generation, which is the newest one the HAL supports and
+// matches the imports of android.hardware.audio.core-V3.
+cc_defaults {
+    name: "pinned_android_hardware_audio_core_ndk_shared",
+    shared_libs: ["android.hardware.audio.core-V3-ndk"],
+}
+
+cc_defaults {
+    name: "pinned_android_hardware_audio_core_sounddose_ndk_shared",
+    shared_libs: ["android.hardware.audio.core.sounddose-V3-ndk"],
+}
+
+cc_defaults {
+    name: "pinned_android_hardware_audio_effect_ndk_shared",
+    shared_libs: ["android.hardware.audio.effect-V3-ndk"],
+}
+
+cc_defaults {
+    name: "pinned_android_media_audio_common_types_ndk_shared",
+    shared_libs: ["android.media.audio.common.types-V4-ndk"],
+}
