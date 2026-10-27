@@ -1,11 +1,23 @@
 cc_library_shared {
     name: "libaudiocorehal.default",
     defaults: [
-        "latest_android_hardware_audio_core_ndk_shared",
-        "latest_android_media_audio_common_types_ndk_shared",
+        "pinned_android_hardware_audio_core_ndk_shared",
+        "pinned_android_media_audio_common_types_ndk_shared",
     ],
     relative_install_path: "hw",
     vendor: true,
+
+    // libaudioserviceexampleimpl is a prebuilt blob here and thus does not
+    // export the core-impl headers of hardware/interfaces/audio/aidl/default.
+    include_dirs: [
+        "frameworks/av/media/audioaidlconversion/include",
+        "hardware/interfaces/audio/aidl/default/include",
+    ],
+    generated_headers: [
+        "audio_policy_capengine_configuration_aidl_default",
+        "audio_policy_configuration_aidl_default",
+        "audio_policy_engine_configuration_aidl_default",
+    ],
 
     cflags: [
         "-DBACKEND_NDK",
